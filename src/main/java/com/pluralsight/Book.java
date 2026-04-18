@@ -1,42 +1,42 @@
 package com.pluralsight;
 
 public class Book {
-    private int id;
-    private String isbn;
-    private String title;
+    private int bookId;
+    private String bookIsbn;
+    private String bookTitle;
     private boolean isCheckedOut;
     private String checkedOutTo;
 
-    public Book(int id, String isbn, String title) {
-        this.id = id;
-        this.isbn = isbn;
-        this.title = title;
+    public Book(int bookId, String bookIsbn, String bookTitle) {
+        this.bookId = bookId;
+        this.bookIsbn = bookIsbn;
+        this.bookTitle = bookTitle;
         this.isCheckedOut = false;
         this.checkedOutTo = null;
     }
 
-    public int getId() {
-        return id;
+    public int getBookId() {
+        return bookId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public String getIsbn() {
-        return isbn;
+    public String getBookIsbn() {
+        return bookIsbn;
     }
 
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
+    public void setBookIsbn(String bookIsbn) {
+        this.bookIsbn = bookIsbn;
     }
 
-    public String getTitle() {
-        return title;
+    public String getBookTitle() {
+        return bookTitle;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setBookTitle(String bookTitle) {
+        this.bookTitle = bookTitle;
     }
 
     public boolean isCheckedOut() {
@@ -63,6 +63,11 @@ public class Book {
     public void checkIn() {
         checkedOutTo = null;
         isCheckedOut = false;
+    }
+
+    @Override
+    public String toString() {
+        return "Id: " + bookId + " | " + "ISBN: " + bookIsbn+ " | " + "Tittle: " + bookTitle;
     }
 }
 
