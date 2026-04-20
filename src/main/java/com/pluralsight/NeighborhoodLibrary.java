@@ -71,7 +71,9 @@ public class NeighborhoodLibrary {
         System.out.println("------------------");
 
         for (int i = 0; i < numOfBooks; i++) {
-            System.out.println(books[i]);
+            if (!books[i].isCheckedOut()) {
+                System.out.println(books[i]);
+            }
         }
 
         System.out.println("------------------");
@@ -106,6 +108,23 @@ public class NeighborhoodLibrary {
                 System.out.println("Id: " + books[i].getBookId() + " ISBN: " + books[i].getBookIsbn() + " Title: " + books[i].getBookTitle() + " -> " + books[i].getCheckedOutTo());
                 System.out.println("------------------");
             }
+        }
+
+        System.out.print("Press C to check in a book, or X to return: ");
+        String checkInBook = scanner.next();
+
+        if (checkInBook.equalsIgnoreCase("C")) {
+            System.out.print("Enter the Id of the book you want to check in: ");
+            String bookId = scanner.next();
+
+            for(int i = 0; i < numOfBooks; i++){
+                if (books[i].getBookId() == Integer.parseInt(bookId)){
+                    books[i].checkIn();
+                    System.out.println("Thank you for returning" + " \"" + books[i].getBookTitle() + "\".");
+                }
+            }
+        }else if (checkInBook.equalsIgnoreCase("X")) {
+            return;
         }
     }
 }
