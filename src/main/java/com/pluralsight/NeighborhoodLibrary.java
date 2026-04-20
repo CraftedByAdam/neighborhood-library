@@ -34,8 +34,10 @@ public class NeighborhoodLibrary {
         Scanner scanner = new Scanner(System.in);
 
         boolean isDone = false;
+
         while (!isDone) {
 
+            System.out.println();
             System.out.println("Store Home Screen");
             System.out.println("------------------");
             System.out.println("1. Show Available Books");
@@ -43,6 +45,7 @@ public class NeighborhoodLibrary {
             System.out.println("3. Exit");
             System.out.print("Enter your choice (1-3): ");
             int choice = scanner.nextInt();
+            System.out.println();
 
             scanner.nextLine();
 
@@ -51,7 +54,8 @@ public class NeighborhoodLibrary {
                     listAllBooks(scanner);
                     break;
                 case 2:
-
+                    checkedOutBooks(scanner);
+                    break;
                 case 3:
 
                 default:
@@ -62,15 +66,46 @@ public class NeighborhoodLibrary {
     }
 
     public static void listAllBooks(Scanner scanner) {
+        System.out.println();
         System.out.println("Books Available");
+        System.out.println("------------------");
+
         for (int i = 0; i < numOfBooks; i++) {
             System.out.println(books[i]);
         }
 
         System.out.println("------------------");
 
-        System.out.print("Enter the Id of the book you want to check out (0 to cancel): ");
+        System.out.print("Enter the Id of the book you want to check out (X to cancel): ");
         String bookId = scanner.next();
 
+        if (bookId.equalsIgnoreCase("X")) {
+            return;
+        }
+
+        System.out.print("Enter your name: ");
+        String name = scanner.next();
+
+        boolean checkOut = false;
+        for (int i = 0; i < numOfBooks; i++) {
+            if (books[i].getBookId() == Integer.parseInt(bookId)) {
+                books[i].checkOut(name);
+                System.out.println("Thank you, " + name + "! " + "You checked out " + "\"" + books[i].getBookTitle() + "\".");
+                checkOut = true;
+            }
+        }
+    }
+    public static void checkedOutBooks(Scanner scanner) {
+        System.out.println();
+        System.out.println("Checked out Books");
+        System.out.println("------------------");
+
+
+        for (int i = 0; i < numOfBooks; i++) {
+            if (books[i].isCheckedOut()) {
+                System.out.println("Id: " + books[i].getBookId() + " ISBN: " + books[i].getBookIsbn() + " Title: " + books[i].getBookTitle() + " -> " + books[i].getCheckedOutTo());
+                System.out.println("------------------");
+            }
+        }
     }
 }
