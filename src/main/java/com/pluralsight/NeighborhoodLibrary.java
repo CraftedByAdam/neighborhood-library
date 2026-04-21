@@ -57,7 +57,8 @@ public class NeighborhoodLibrary {
                     checkedOutBooks(scanner);
                     break;
                 case 3:
-
+                    isDone = true;
+                    break;
                 default:
                     System.out.println("Invalid Choice");
                     break;
@@ -127,4 +128,5 @@ public class NeighborhoodLibrary {
             return;
         }
     }
+
 }
