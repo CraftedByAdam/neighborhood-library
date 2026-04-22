@@ -4,11 +4,12 @@ import java.util.Scanner;
 
 public class NeighborhoodLibrary {
 
+    //Here I used an array to hold an inventory of at least 20 books just like a real shelf
     private static Book[] books = new Book[20];
 
     private static int numOfBooks = 20;
 
-
+    //Here I assigned my 20 books
     public static void main(String[] args) {
         books[0] = new Book(1, "111-1111111101", "Adam Becomes an Engineer - Hello World!");
         books[1] = new Book(2, "111-1111111102", "Adam Becomes an Engineer Chapter 2");
@@ -31,10 +32,12 @@ public class NeighborhoodLibrary {
         books[18] = new Book(19, "111-1111111019", "Adam Becomes an Engineer Chapter 19");
         books[19] = new Book(20, "111-1111111020", "Adam Becomes an Engineer - The Last Line!");
 
+        //Created a scanner for user input
         Scanner scanner = new Scanner(System.in);
 
         boolean isDone = false;
 
+        //This while loop keeps the library open and shows the home screen till the user chooses to exit
         while (!isDone) {
 
             System.out.println();
@@ -82,6 +85,7 @@ public class NeighborhoodLibrary {
         System.out.print("Enter the Id of the book you want to check out (X to cancel): ");
         String bookId = scanner.next();
 
+        //I check for X here so the user can go back to the home screen immediately without my program trying to find a book ID
         if (bookId.equalsIgnoreCase("X")) {
             return;
         }
@@ -106,7 +110,7 @@ public class NeighborhoodLibrary {
 
         for (int i = 0; i < numOfBooks; i++) {
             if (books[i].isCheckedOut()) {
-                System.out.println("Id: " + books[i].getBookId() + " ISBN: " + books[i].getBookIsbn() + " Title: " + books[i].getBookTitle() + " -> " + books[i].getCheckedOutTo());
+                System.out.println(books[i]);
                 System.out.println("------------------");
             }
         }
